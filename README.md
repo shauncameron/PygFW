@@ -1,4 +1,4 @@
-## Welcome to the PygFW
+## Welcome to PygFW
 
 PygFW stands for `Pygame Framework` and is a framework I create to be used in creating games with pygame. It has many builtins that help to eventually run your own game (hopefully with minimal effort!). In the docs you will find examples, usage and dev notes for everything within the framework. For starting out, we'll look at an example of creating a game with one scene and a controllable character: visit [here](). 
 
