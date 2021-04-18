@@ -9,7 +9,7 @@ from _thread import start_new_thread
 
 class Engine(VolatileObject):
 
-    def __init__(self, window_dimensions, fps):
+    def __init__(self, window_dimensions, fps, display_set_mode_args=()):
 
         VolatileObject.__init__(self)
 
@@ -27,6 +27,7 @@ class Engine(VolatileObject):
 
         self.single_events = DataContainer()
         self.repeated_events = DataContainer()
+        self.display_set_mode_args = display_set_mode_args
 
         self.take_screenshot = None
         self.screen = None
@@ -133,7 +134,7 @@ class Engine(VolatileObject):
 
         while workspace_scene.run:
 
-            self.pygame_surface = pygame.display.set_mode(self.window_dimensions)
+            self.pygame_surface = pygame.display.set_mode(self.window_dimensions, *self.display_set_mode_args)
 
             pygame.display.set_caption(self.window_caption)
             if self.window_icon:
