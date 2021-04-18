@@ -28,6 +28,9 @@ class Engine(VolatileObject):
         self.single_events = DataContainer()
         self.repeated_events = DataContainer()
 
+        self.take_screenshot = None
+        self.screen = None
+
     @property
     def image_bank(self):
 
@@ -180,3 +183,10 @@ class Engine(VolatileObject):
             self.single_events.clear()
 
             pygame.display.update()
+
+            self.screen = self.pygame_surface
+
+            if self.take_screenshot:
+
+                pygame.image.save(self.screen, self.take_screenshot)
+                self.take_screenshot = None

@@ -34,17 +34,17 @@ class Event(VolatileObject):
         return add_function
 
 
-def Eventifies(scene, listener=None, add=False):
+def Eventifies(scene=None, listener=None, add=False):
 
-    def set_executor(function):
+    def create_event(executor):
 
         event = Event(scene_surface=scene, listener=listener)
-        event.executor = function
+        event.executor = executor
+
+        if add:
+
+            scene.events.add(event)
 
         return event
 
-    if add:
-
-        scene.events.add(set_executor)
-
-    return set_executor
+    return create_event

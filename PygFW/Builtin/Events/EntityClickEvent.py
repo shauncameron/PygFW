@@ -11,9 +11,11 @@ class EntityClickEvent(Event):
 
         for entity in scene.entities._list_:
 
-            if entity.collides_with([event.pos]):
+            if entity.clickable:
 
-                entity.click(scene, event)
+                if entity.collides_with([event.pos]):
+
+                    entity.click(scene, event)
 
 class EntityUnclickEvent(Event):
 
@@ -25,4 +27,6 @@ class EntityUnclickEvent(Event):
 
         for entity in scene.entities._list_:
 
-            entity.un_click(scene, event)
+            if entity.un_clickable:
+
+                entity.un_click(scene, event)

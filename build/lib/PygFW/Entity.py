@@ -5,20 +5,22 @@ from PygFW.Data.DataContainer import DataContainer
 
 class Entity():
 
-    def __init__(self, scene_surface, sprites: [ImageObject, ], spawn: [int, int], rotate_sprites=False,
+    def __init__(self, scene_surface, sprites: [ImageObject, ] = None, spawn: [int, int] = (0, 0), rotate_sprites=False,
                  coordinate_offset: [int, int] = (0, 0)):
 
         # VolatileObject.__init__(self)
 
         self.scene = scene_surface
 
-        self.sprites = ImageGallery()
-
         if sprites:
 
-            for sprite in sprites:
+            self.sprites = ImageGallery()
 
-                self.sprites.add(sprite)
+            if sprites:
+
+                for sprite in sprites:
+
+                    self.sprites.add(sprite)
 
         self.mdt = DataContainer()
 
@@ -33,6 +35,9 @@ class Entity():
         self._radius_history_x = self.x
         self._radius_history_y = self.y
         self._radius_history = []
+
+        self.clickable = True
+        self.unclickable = True
 
     @property
     def absolute_position(self):

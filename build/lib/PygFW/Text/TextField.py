@@ -6,9 +6,7 @@ from PygFW.Event import Eventifies
 from PygFW.Volatile import default_clock
 import pygame
 
-default_font_path = 'Assets/Fonts/NotoSerif/NotoSerif-Bold.ttf'
-
-def draw_text_absolute(surface, text = 'A', position: [int, int] = (0, 0), colour: [int, int, int] = (255, 255, 255), font_path: str = default_font_path, font_size: int = 18):
+def draw_text_absolute(surface, text = 'A', position: [int, int] = (0, 0), colour: [int, int, int] = (255, 255, 255), font_path: str = None, font_size: int = 18):
 
     # TODO make a place to store fonts to be reused to reduce lag
 
@@ -19,7 +17,7 @@ def draw_text_absolute(surface, text = 'A', position: [int, int] = (0, 0), colou
 
 class TextFieldStringConstructor(DataContainer):
 
-    def __init__(self, string: str, colour: [int, int, int] = (255, 255, 255), font_path: str = default_font_path, font_size: int = 18):
+    def __init__(self, string: str, colour: [int, int, int] = (255, 255, 255), font_path: str = None, font_size: int = 18):
 
         DataContainer.__init__(self)
 
@@ -52,11 +50,11 @@ class TextFieldStringConstructor(DataContainer):
 
 class TextFieldCharacter(Character):
 
-    def __init__(self, character, colour: [int, int, int] = (255, 255, 255), font_path: str = default_font_path, font_size: int = 18):
+    def __init__(self, character, colour: [int, int, int] = (255, 255, 255), font_path: str = None, font_size: int = 18):
 
         Character.__init__(self, character)
         self.colour = colour
-        self.font_path = font_path
+        self.font_path = default_font_path if font_path is None else font_path
         self.font_size = font_size
 
         self.constructed = self.construct()

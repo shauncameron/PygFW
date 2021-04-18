@@ -94,9 +94,9 @@ class ImageObject:
 
         self._image_converted = self.get_warped(new_dimensions)
 
-    def change_scale(self, new_scale: int):
+    def change_scale(self, new_scale: float):
 
-        self._image_converted = self.get_warped((self.width * new_scale, self.height * new_scale))
+        self._image_converted = self.get_warped((int(self.width * new_scale), int(self.height * new_scale)))
 
     def get_rotated(self, new_rotation):
 
@@ -125,3 +125,7 @@ class ImageObject:
     def fade(self, new_alpha):
 
         self._image_converted = self.get_faded(new_alpha)
+
+    def revert(self):
+
+        self._image_converted = self._initialised_image
